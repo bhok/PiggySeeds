@@ -389,21 +389,21 @@ extern "C" void* ThreadStats(void*) {
   } while(1);
 }
 
-static const string mainnet_seeds[] = {"piggynodes.piggy-coin.com", 
-                                       "piggynodes.piggyfacts.com", 
-                                       "piggynodes.blockpunk.com", 
-                                       "piggynodes.neurocis.me", 
+static const string mainnet_seeds[] = {"node1.cryptojacks.com", 
+                                       "192.157.212.234", 
+                                       "192.157.212.235", 
+                                       "5.189.180.41", 
                                        ""};
-static const string testnet_seeds[] = {"piggytest.piggy-coin.com", 
-                                       "piggytest.piggyfacts.com", 
-                                       "piggytest.blockpunk.com", 
-                                       "piggytest.neurocis.me", 
+static const string testnet_seeds[] = {"testnet.cryptojacks.com", 
+                                       "testnet1.cryptojacks.com", 
+                                       "testnet2.cryptojacks.com", 
+                                       "testnet3.cryptojacks.com", 
                                        ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 54481), true);
+    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 33433), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -454,10 +454,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0xa2;
-      pchMessageStart[1] = 0xa1;
-      pchMessageStart[2] = 0xa3;
-      pchMessageStart[3] = 0xa4;
+      pchMessageStart[0] = 0xcd;
+      pchMessageStart[1] = 0xf2;
+      pchMessageStart[2] = 0xc0;
+      pchMessageStart[3] = 0xef;
       seeds = testnet_seeds;
       fTestNet = true;
   }
