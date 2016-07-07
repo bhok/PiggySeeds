@@ -80,7 +80,7 @@ class CNode {
     CAddress me(CService("0.0.0.0"));
     BeginMessage("version");
     int nBestHeight = GetRequireHeight();
-    string ver = "/PiggySeeds:1.2.3.0/";
+    string ver = "/CryptoJacks-Seeds:1.0/";
     vSend << PROTOCOL_VERSION << nLocalServices << nTime << you << me << nLocalNonce << ver << nBestHeight;
     EndMessage();
   }
@@ -144,8 +144,8 @@ class CNode {
 //        printf("%s: got address %s\n", ToString(you).c_str(), addr.ToString().c_str(), (int)(vAddr->size()));
         it++;
         if (addr.nTime <= 100000000 || addr.nTime > now + 600)
-          addr.nTime = now - 5 * 86400;
-        if (addr.nTime > now - 604800)
+          addr.nTime = now - 1 * 86400;
+        if (addr.nTime > now - 86400)
           vAddr->push_back(addr);
 //        printf("%s: added address %s (#%i)\n", ToString(you).c_str(), addr.ToString().c_str(), (int)(vAddr->size()));
         if (vAddr->size() > 1000) {doneAfter = 1; return true; }
